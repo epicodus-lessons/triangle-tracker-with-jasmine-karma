@@ -1,0 +1,15 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "jquery": true
+    },
+    "rules": {
+        "semi": 1,
+        "indent": ["warn", 2]
+    }
+}
