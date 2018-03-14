@@ -8,7 +8,7 @@ describe('Triangle', function() {
   });
 
   it('should correctly determine whether three lengths can be made into a triangle', function() {
-    var notTriangle = new Triangle(3,9,22)
+    var notTriangle = new Triangle(3,9,22);
     expect(notTriangle.checkType()).toEqual("not a triangle");
   });
 

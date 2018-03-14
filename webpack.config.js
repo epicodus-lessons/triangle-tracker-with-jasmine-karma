@@ -1,7 +1,8 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: './src/main.js',
@@ -9,18 +10,18 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   devServer: {
     contentBase: './dist'
   },
   plugins: [
+    new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Triangle Tracker',
       template: './src/index.html',
       inject: 'body'
-    }),
-    new UglifyJsPlugin
+    })
   ],
   module: {
     rules: [
@@ -34,11 +35,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: [
-          /node_modules/,
-          /spec/
-        ],
+                /node_modules/,
+                /spec/
+              ],
         loader: "eslint-loader"
-      }
+      },
     ]
   }
 };
